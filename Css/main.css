@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: black;
+}
+
+h1 {
+    color:black;
+}
+
+th {
+    background-color: #F4A460;
+    color: black;
+}
+
+.chart {
+    position: relative;
+    top: 0%;
+    left: 0%;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    background-color: #F5DEB3;
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    width: 3840px;
+    height: 100%;
+
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100px 1fr 1fr 100px;
+
+    gap: 10px;
+
+    /* box-sizing: border-box; */
+}
+
+.fronius_table {
+    float: left;
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    /* height: 50%; */
+}
+
+.jointState, .robot_pose {
+    position: relative;
+    top: 0%;
+    right: 0%;
+    background-color: #F5DEB3;
+    align-items: left;
+    text-align: center;
+}
+
+.jointState {
+    display: grid;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.footer {
+    position: relative;
+    display: grid;
+    grid-column: 1 / span 3;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: black;
+    background-color: #F5DEB3;
+}
+
+.header {
+    position: relative;
+    background: #FF8C00;
+    border: 1px solid #FF8C00;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    align-items: center;
+    text-align: center;
+}
+
+.header h1 {
+    height: 80%;
+    margin: 0px 0px 0px 0px;
+}
+
+/* .pose_table {
+    float: left;
+    position: relative;
+    /* top: 2%; */
+    /* width: 100%;
+    height: 100%;
+    margin-top: 30px; */
+
+
+.robot_pose {
+    /* margin-top: 30px; */
+    color: black;
+    
+    display: grid;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.robot_viz {
+    position: relative;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    background-color: #F5DEB3;
+    text-align: center;
+}
+
+/* TABLE STYLE */
+.table_even_row {
+    background: #F4A460;
+    padding: 5px 5px 5px 5px;
+    color:black;
+}
+
+.table_odd_row {
+    background: #FFDEAD;
+    padding: 5px 5px 5px 5px;
+    color: black;
+}
+
+.visual_button{
+    position: absolute;
+    top: 38%;
+    left: 44%;
+}
+
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+    width: 500px;
+    height: 200px;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#chartCurrent, #chartVoltage, #chartWireFeed {
+    position: relative;
+    left: 5%;
+    top: 2%;
+}
+
+#connection_state {
+    flex: 0.1 0.1 auto;
+    float: left;
+    color: black;
+    position: relative;
+    top: 20%;
+    left: 3%;
+}
+
+#connected_image {
+    float: left;
+    width: 40px;
+    height: 40px;
+    align-self: center;
+    margin: 0 auto;
+}
+
+#joint_state {
+    margin-top: 50px;
+    font-size: 40px;
+    color: #111;
+    width: 80%;
+    height: 80%;
+    position: relative;
+    align-content: center;
+    padding: 10px;
+}
+
+#kp2_table {
+    margin-top: 50px;
+    color: #111;
+    width: 1000px;
+    height: 200px;
+    position: relative;
+    align-content: center;
+}
+
+#kp2_title {
+    margin-top: 50px;
+}
+
+#kr10_label {
+    flex: 0.1 0.1 auto;
+    float: left;
+    color: black;
+    margin: 0 0 0 0;
+    position: relative;
+    top: 20%;
+    left: 2%;
+}
+
+#kr10_button{
+    background-color: #F4A460;
+    height: 40px;
+    width: 100px;
+    border: 1px solid black;
+    position: relative;
+    top: 20%;
+    left: 20%;
+}
+
+#kr90_button{
+    background-color: #F5DEB3;
+    height: 40px;
+    width: 100px;
+    border: 1px solid black;
+}
+
+#observacao{
+    margin-top: 40px;
+    color: black;
+}
+
+#power_sourcer {
+    font-size: 40px;
+    width: 60%;
+    height: 40%;
+    padding: 10px;
+}
+
+#robot_position, #robot_orientation {
+    margin-bottom: 30px;
+    margin-top: 50px;
+    font-size: 40px;
+    width: 90%;
+    height: 100%;
+    padding: 10px;
+}
+
+#robot_viz_container {
+    position: relative;
+    top: 50px;
+    /* left: 20%; */
+    display: flex;
+    justify-content: center;  
+}
+
+#rviz_button, #rviz_button2 {
+    margin-top: 100px;
+    height: 40px;
+    width: 100px;
+    /* border: 1px solid #FF8C00; */
+}
+
+#speed_table {
+    margin-top: 2%;
+    font-size: 40px;
+}
+
+#texto_footer {
+    align-items: center;
+}
+
+#table_label {
+    width: 200px;
+    height: 200px;
+}

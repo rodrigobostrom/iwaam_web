@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8" />
+
+    <link rel="shortcut icon" href="">
+
+    <link rel="stylesheet" type="text/css" href="Css/main.css">
+
+    <title>iWAAM</title>
+
+    <!-- JQUERY 3.6.0 -->
+    <script src="Javascripts/jquery-3.6.0.min.js"></script>
+
+    <!-- IMPORTED JAVASCRIPT FOR ROS CONNECTION -->
+    <script type="text/javascript" src="Javascripts/eventemitter2.min.js"></script>
+    <script type="text/javascript" src="Javascripts/roslib.min.js"></script>
+    <script type="text/javascript" src="Javascripts/three.min.js"></script>
+    <script type="text/javascript" src="Javascripts/ColladaLoader.js"></script>
+    <script type="text/javascript" src="Javascripts/STLLoader.js"></script>
+    <script type="text/javascript" src="Javascripts/ros3d.js"></script>
+    <script type="text/javascript" src="Javascripts/canvasjs.min.js"></script>
+
+    <!-- IMPORTED JAVASCRIPT FOR DATA CONTAINERS -->
+    <script type="text/javascript" src="Javascripts/RvizTable.js"></script>
+    <script type="text/javascript" src="Javascripts/PowerSource.js"></script>
+    <script type="text/javascript" src="Javascripts/JointStates.js"></script>
+    <script type="text/javascript" src="Javascripts/RobotPosition.js"></script>
+    <script type="text/javascript" src="Javascripts/RobotOrientation.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head>
+
+  <body>
+    <div class="container">
+
+      <!-- Header -->
+
+      <div class="header">
+        <div id="kr10_label">
+          <h1>iWAAM</h1>
+        </div>
+        <div id="connection_state">
+          <input class ="connected_disconnected_image" id='connected_image' type="image" src="img/Disconnected.png" onclick="connect();" />
+        </div>
+        <script>
+          setInterval(updateConnectionImage, 20);
+        </script>
+      </div>
+
+      <!-- Graphs -->
+
+      <div class="chart">
+        <div id="chartCurrent" style="height: 30%; width: 90%;"></div>
+        <div id="chartVoltage" style="height: 30%; width: 90%; margin-top: 50px;"></div>
+        <div id="chartWireFeed" style="height: 30%; width: 90%; margin-top: 50px;"></div>
+
+        <script>
+          createChart();
+        </script>
+      </div>
+    
+      <!-- Robot Visualization -->
+
+      <div class="robot_viz">
+        <h1 style="margin-top: 20px;">Robot Visualization</h1>
+        <div id="robot_viz_container">
+          <!-- Tela onde aparecerá o RVIZ do robô -->
+        </div>
+        <div class="visual_button">
+          <button type="button" id="rviz_button" onclick=startKR10()><h2>KR10</h2></button>
+          <button type="button" id="rviz_button2" onclick=startKR90()><h2>KR90</h2></button>
+        </div>
+        
+        <!-- Power Sourcer Readings and Travel Speed -->
+
+        <div class="fronius_table">
+          <h1 style="margin-top: 28px; margin-bottom: 20px;">Power Source Readings</h1>
+          <table id="power_sourcer" cellpadding="2" border='1'> </table>
+        </div>
+        <script>
+          createPwrSrcTable();
+          setInterval(updatePowerSourcerReadings, 20);
+        </script>
+      </div>
+
+      <!-- Joint States -->
+
+      <div class="jointState">
+        <h1 style="margin-top: 20px;">Joint States</h1>
+        <table id="joint_state" cellspacing="4" border='1'>
+          <th id="table_label">Joints</th>
+          <th id="table_label">A1</th>
+          <th id="table_label">A2</th>
+          <th id="table_label">A3</th>
+          <th id="table_label">A4</th>
+          <th id="table_label">A5</th>
+          <th id="table_label">A6</th>
+          <th id="table_label">E1*</th>
+          <th id="table_label">E2*</th>
+        </table>
+        <h2 id="observacao">* Kuka KP2 Table</h2>
+        <script>
+          createJointStateTable();
+          setInterval(updateJointStateTable,20);
+        </script>
+      </div>
+
+      <!-- Position and Orientation of the Robot -->
+
+      <div class='robot_pose'>
+        <div class="pose_table" style="margin-bottom: 100px;">
+          <h2 style="margin-bottom: 30px;">Position (mm)</h2>
+          <table id="robot_position" cellpadding="2" border='1'> </table>
+        </div>
+        <script>
+          createPositionTable();
+          setInterval(updatePositionTable, 50);
+        </script>
+
+        <div class="pose_table" style="margin-bottom: 100px;">
+          <h2>Orientation (RPY in º)</h2>
+          <table id="robot_orientation" cellpadding="2" border='1'> </table>
+        </div>
+        <script>
+          createOrientationTable();
+          setInterval(updateOrientationTable, 50);
+        </script>
+      </div>
+
+      <div class='footer'>
+        <h3 id="texto_footer" style="margin-top: 30px;">Desenvolvido no LEAD - Laboratório de Controle e Automação, 
+        Engenharia de Aplicação e Desenvolvimento - UFRJ</h3>
+      </div>
+
+    </div>
+
+  </body>
+
+</html>
